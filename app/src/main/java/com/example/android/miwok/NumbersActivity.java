@@ -15,6 +15,7 @@
  */
 package com.example.android.miwok;
 
+import android.provider.UserDictionary;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,30 +36,31 @@ public class  NumbersActivity extends AppCompatActivity {
 
         //creating an arraY Called words
 
-        ArrayList<String> words = new ArrayList<String>();
+        ArrayList<Word> words = new ArrayList<Word>();
 
-       words.add("one");
-        words.add("two");
-        words.add("three");
-        words.add("four");
-        words.add("five");
-        words.add("six");
-        words.add("seven");
-        words.add("eight");
-        words.add("nine");
-        words.add("ten");
+      //words.add("one);
+        words.add(new Word("one","lutti"));
+        words.add(new Word("two","otiko"));
+        words.add(new Word("three","tolookosu"));
+        words.add(new Word("four","oyyisa"));
+        words.add(new Word("five","massoka"));
+        words.add(new Word("six","temmoka"));
+        words.add(new Word("seven","kenekaku"));
+        words.add(new Word("eight","kawita"));
+        words.add(new Word("nine","wo'e"));
+        words.add(new Word("ten","na'aacha"));
 
         //creating an array adapter whose data source is a list of strings from words
         //adapter creates the layouts for each words from the array List
         //dispaly the single words
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,words);
+        WordAdapter adapter= new WordAdapter(this,words);
 
 
         //finding the listView with the ID from the XML
         GridView listView = (GridView) findViewById(R.id.rootView);
 
         //ListView will now make use of the ArrayAdapter that we created to display list items for eachword in the list of words.
-        listView.setAdapter(itemsAdapter);
+        listView.setAdapter(adapter);
 
         }
 
